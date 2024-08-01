@@ -1,4 +1,3 @@
-package July_31_2024;
 import java.util.Random;
 
 public class sequential_search {
