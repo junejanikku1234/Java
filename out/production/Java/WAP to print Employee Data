@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+class Employee {
+    private String name;
+    private int yearOfJoining;
+    private double salary;
+    private String address;
+
+    public Employee(String name, int yearOfJoining, double salary, String address) {
+        this.name = name;
+        this.yearOfJoining = yearOfJoining;
+        this.salary = salary; 
+        this.address = address;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getYearOfJoining() {
+        return yearOfJoining;
+    }
+
+    public double getSalary() { 
+        return salary;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void printInfo() {
+        System.out.printf("%-10s %4d %15.2f %s\n", name, yearOfJoining, salary, address);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        Employee emp1 = new Employee("Robert", 1994, 35000.00, "64C- WallsStreat"); // Initialize salary
+        Employee emp2 = new Employee("Sam", 2000, 42000.00, "68D- WallsStreat"); // Initialize salary
+        Employee emp3 = new Employee("John", 1999, 50000.00, "26B- WallsStreat"); // Initialize salary
+
+        Employee[] emp = {emp1, emp2, emp3};
+        
+        System.out.println("Name     Year of joining  Salary        Address");
+        System.out.println("---------------------------------------------");
+        
+        for(Employee a : emp){
+          a.printInfo();
+        }
+
+        scanner.close();
+    }
+}
