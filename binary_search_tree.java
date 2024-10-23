@@ -56,10 +56,19 @@ public class binary_search_tree {
         inorder(root.right);
     }
 
-    public int node_count(binary_search_tree tree) {
-        return tree.nodeCount;
+    public int node_count() {
+        return this.nodeCount;
     }
 
+//    public int calc_Height(TreeNode node) {
+//        if (node == null)
+//            return -1;
+//
+//        int leftHeight = calc_Height(node.left);
+//        int rightHeight = calc_Height(node.right);
+//
+//        return 1 + Math.max(leftHeight, rightHeight);
+//    }
 
     public static void main(String[] args) {
         binary_search_tree tree = new binary_search_tree();
@@ -74,6 +83,7 @@ public class binary_search_tree {
         tree.insert(20);
 
         tree.inorder(tree.root);
-        System.out.println(tree.node_count(tree));
+//        System.out.println(tree.calc_Height(tree));
+        System.out.println(tree.node_count());
     }
 }
