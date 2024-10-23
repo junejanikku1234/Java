@@ -11,12 +11,14 @@ public class binary_search_tree {
         }
     }
     private TreeNode root = null;
+    private int nodeCount = 0;
 
     public void insert(int value) {
         TreeNode newTreeNode = new TreeNode(value);
 
         if (root == null) {
             root = newTreeNode;
+            nodeCount++;
         }
         else {
             TreeNode temp = root;
@@ -24,6 +26,7 @@ public class binary_search_tree {
                 if (value <= temp.val) {
                     if (temp.left == null) {
                         temp.left = newTreeNode;
+                        nodeCount++;
                         break;
                     }
                     else {
@@ -33,6 +36,7 @@ public class binary_search_tree {
                 else {
                     if (temp.right == null) {
                         temp.right = newTreeNode;
+                        nodeCount++;
                         break;
                     }
                     else {
@@ -52,6 +56,10 @@ public class binary_search_tree {
         inorder(root.right);
     }
 
+    public int node_count(binary_search_tree tree) {
+        return tree.nodeCount;
+    }
+
 
     public static void main(String[] args) {
         binary_search_tree tree = new binary_search_tree();
@@ -66,5 +74,6 @@ public class binary_search_tree {
         tree.insert(20);
 
         tree.inorder(tree.root);
+        System.out.println(tree.node_count(tree));
     }
 }
