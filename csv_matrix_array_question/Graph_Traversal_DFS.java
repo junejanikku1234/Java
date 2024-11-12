@@ -3,8 +3,9 @@ package csv_matrix_array_question;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.Stack;
 
-public class Matrix_Builder {
+public class Graph_Traversal_DFS {
     public static void main(String[] args) {
         int max_row = 0;
         int max_col = 0;
@@ -40,8 +41,8 @@ public class Matrix_Builder {
                 String line = sc.nextLine();
                 String[] values = line.split(",");
 
-                int row = Integer.parseInt(values[0].trim())-1;
-                int col = Integer.parseInt(values[1].trim())-1;
+                int row = Integer.parseInt(values[0].trim()) - 1;
+                int col = Integer.parseInt(values[1].trim()) - 1;
                 int data = Integer.parseInt(values[2].trim());
 
                 matrix[row][col] = data;
@@ -51,11 +52,26 @@ public class Matrix_Builder {
             return;
         }
 
-        for (int[] row : matrix) {
-            for (int value : row) {
-                System.out.print(value + " ");
+        boolean[] visited = new boolean[max_row + 1];
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(1);
+
+        while (!stack.isEmpty()) {
+            int current = stack.pop();
+
+            if (visited[current]) {
+                continue;
             }
-            System.out.println();
+
+            visited[current] = true;
+            System.out.print(current + " ");
+
+            for (int i = 1; i <= max_row; i++) {
+                if (matrix[current - 1][i - 1] != 0 && !visited[i]) {
+                    stack.push(i);
+                }
+            }
         }
     }
 }
